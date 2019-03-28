@@ -97,8 +97,8 @@ void IF(){
     int e = E();
     skip(")");
     emit("goifnot T%d L%d\n", e, elseBegin);
-    emit("goif T%d L%d\n", e, ifEnd);
     STMT();
+    emit("goto L%d\n", ifEnd);
     if(isNext("else")){
         emit("(L%d)\n", elseBegin);
         skip("else");
